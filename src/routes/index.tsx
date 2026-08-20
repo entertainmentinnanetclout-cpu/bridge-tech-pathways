@@ -1,24 +1,73 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { AboutSection } from "@/components/site/AboutSection";
+import { CTASection } from "@/components/site/CTASection";
+import { DigitalRuralStory } from "@/components/site/DigitalRuralStory";
+import { DocumentChecklist } from "@/components/site/DocumentChecklist";
+import { FAQ } from "@/components/site/FAQ";
+import { FocusAreas } from "@/components/site/FocusAreas";
+import { Hero } from "@/components/site/Hero";
+import { ImpactPathway } from "@/components/site/ImpactPathway";
+import { IntakeProcess } from "@/components/site/IntakeProcess";
+import { IntroBand } from "@/components/site/IntroBand";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { TertiarySupport } from "@/components/site/TertiarySupport";
+
+const title = "TECH-UP | Digital-Rural Empowerment & Tertiary Support";
+const description =
+  "TECH-UP Digital-Rural Empowerment NPC helps bridge rural digital gaps through access, education pathways, tertiary readiness and opportunity support.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "TECH-UP Digital-Rural Empowerment NPC",
+          alternateName: "TECH-UP",
+          description,
+          slogan: "Bridging Rural Gaps Through Digital Opportunity",
+          url: "/",
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-dvh bg-background">
+      <SiteHeader />
+      <main>
+        <Hero />
+        <IntroBand />
+        <AboutSection />
+        <FocusAreas />
+        <TertiarySupport />
+        <IntakeProcess />
+        <DocumentChecklist />
+        <DigitalRuralStory />
+        <ImpactPathway />
+        <FAQ />
+        <CTASection />
+      </main>
+      <SiteFooter />
     </div>
   );
 }
