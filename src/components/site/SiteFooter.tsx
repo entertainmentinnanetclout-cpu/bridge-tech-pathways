@@ -19,8 +19,8 @@ export function SiteFooter() {
             <img
               src={logo.url}
               alt="TECH-UP Digital-Rural Empowerment NPC logo"
-              width={240}
-              height={127}
+              width={428}
+              height={420}
               loading="lazy"
               className="h-14 w-auto object-contain"
             />

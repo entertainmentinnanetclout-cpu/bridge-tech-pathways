@@ -31,8 +31,8 @@ export function SiteHeader() {
           <img
             src={logo.url}
             alt="TECH-UP Digital-Rural Empowerment NPC logo"
-            width={200}
-            height={106}
+            width={428}
+            height={420}
             className="h-11 w-auto object-contain sm:h-12"
           />
         </a>
@@ -65,8 +65,8 @@ export function SiteHeader() {
                 <img
                   src={logo.url}
                   alt="TECH-UP Digital-Rural Empowerment NPC logo"
-                  width={200}
-                  height={106}
+                  width={428}
+                  height={420}
                   className="h-12 w-auto self-start object-contain"
                 />
                 <nav aria-label="Mobile" className="mt-8 flex flex-col gap-1">
