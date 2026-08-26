@@ -14,9 +14,9 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { TertiarySupport } from "@/components/site/TertiarySupport";
 
-const title = "TECH-UP | Digital-Rural Empowerment & Tertiary Support";
+const title = "TECH-UP | Rural-Digital Empowerment & Tertiary Support";
 const description =
-  "TECH-UP Digital-Rural Empowerment NPC helps bridge rural digital gaps through access, education pathways, tertiary readiness and opportunity support.";
+  "TECH-UP Rural-Digital Empowerment NPC helps bridge rural digital gaps through access, education pathways, tertiary readiness and opportunity support.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "TECH-UP Digital-Rural Empowerment NPC",
+          name: "TECH-UP Rural-Digital Empowerment NPC",
           alternateName: "TECH-UP",
           description,
           slogan: "Bridging Rural Gaps Through Digital Opportunity",

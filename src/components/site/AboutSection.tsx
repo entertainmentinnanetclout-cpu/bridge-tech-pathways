@@ -32,7 +32,7 @@ export function AboutSection() {
 
           <Reveal delay={100} className="space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              TECH-UP Digital-Rural Empowerment NPC exists to help bridge digital and opportunity
+              TECH-UP Rural-Digital Empowerment NPC exists to help bridge digital and opportunity
               gaps affecting rural communities.
             </p>
             <p>

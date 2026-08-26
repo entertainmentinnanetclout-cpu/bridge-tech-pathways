@@ -13,13 +13,13 @@ export function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 pt-14 pb-16 sm:px-6 md:pt-20 md:pb-24 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:px-8">
         <div>
           <p className="text-xs font-semibold tracking-[0.22em] text-brand-turquoise uppercase">
-            Digital-Rural Empowerment
+            Rural-Digital Empowerment
           </p>
           <h1 className="mt-5 text-4xl leading-[1.08] font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
             Bridging Rural Gaps Through Digital Opportunity.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            TECH-UP Digital-Rural Empowerment NPC works to expand access to digital tools,
+            TECH-UP Rural-Digital Empowerment NPC works to expand access to digital tools,
             education pathways and opportunities that help rural communities participate in an
             increasingly connected world.
           </p>
