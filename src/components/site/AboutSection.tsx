@@ -32,20 +32,21 @@ export function AboutSection() {
 
           <Reveal delay={100} className="space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              TECH-UP Digital-Rural Empowerment NPC exists to help bridge digital and opportunity
-              gaps affecting rural communities.
+              TECH-UP Rural-Digital Empowerment NPC is a registered South African Non-Profit Company
+              founded to bridge the digital and socioeconomic divide in rural communities.
             </p>
             <p>
-              As education, applications, communication, employment and essential services become
-              increasingly digital, communities without the same level of access, information and
-              technical support can be left behind.
+              We operate at the intersection of education, 4IR technology and community development.
+              We work directly with high school learners, pre-matric students, unemployed youth and
+              rural institutions across Maologane, Witrandjies, Tlhatlhaganye and broader rural
+              areas.
             </p>
             <p>
-              TECH-UP aims to help create practical bridges between people and these opportunities
-              through digital support, education pathways, information access and community-focused
-              initiatives.
+              Our mission is to ensure that a student&rsquo;s geographic location never limits their
+              academic potential, technical capability or economic future.
             </p>
           </Reveal>
+
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "What is TECH-UP?",
     answer:
-      "TECH-UP Digital-Rural Empowerment NPC is focused on using digital access, information and opportunity pathways to support rural empowerment.",
+      "TECH-UP Rural-Digital Empowerment NPC is focused on using digital access, information and opportunity pathways to support rural empowerment.",
   },
   {
     question: "What is the TECH-UP Tertiary Intake?",

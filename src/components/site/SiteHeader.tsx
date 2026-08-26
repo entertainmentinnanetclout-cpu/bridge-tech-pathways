@@ -30,7 +30,7 @@ export function SiteHeader() {
         <a href="#top" className="flex shrink-0 items-center" aria-label="TECH-UP home">
           <img
             src={logo.url}
-            alt="TECH-UP Digital-Rural Empowerment NPC logo"
+            alt="TECH-UP Rural-Digital Empowerment NPC logo"
             width={428}
             height={420}
             className="h-11 w-auto object-contain sm:h-12"
@@ -64,7 +64,7 @@ export function SiteHeader() {
               <div className="flex h-full flex-col">
                 <img
                   src={logo.url}
-                  alt="TECH-UP Digital-Rural Empowerment NPC logo"
+                  alt="TECH-UP Rural-Digital Empowerment NPC logo"
                   width={428}
                   height={420}
                   className="h-12 w-auto self-start object-contain"

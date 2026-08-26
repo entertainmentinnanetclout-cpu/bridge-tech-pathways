@@ -18,14 +18,14 @@ export function SiteFooter() {
           <div>
             <img
               src={logo.url}
-              alt="TECH-UP Digital-Rural Empowerment NPC logo"
+              alt="TECH-UP Rural-Digital Empowerment NPC logo"
               width={428}
               height={420}
               loading="lazy"
               className="h-14 w-auto object-contain"
             />
             <p className="mt-5 text-base font-semibold text-primary">
-              TECH-UP Digital-Rural Empowerment NPC
+              TECH-UP Rural-Digital Empowerment NPC
             </p>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Bridging Rural Gaps Through Digital Opportunity
@@ -51,7 +51,7 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-12 border-t border-border pt-6 text-xs text-muted-foreground">
-          © {year} TECH-UP Digital-Rural Empowerment NPC. All rights reserved.
+          © {year} TECH-UP Rural-Digital Empowerment NPC. All rights reserved.
         </p>
       </div>
     </footer>

@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TECH-UP | Digital-Rural Empowerment & Tertiary Support" },
+      { title: "TECH-UP | Rural-Digital Empowerment & Tertiary Support" },
       {
         name: "description",
         content:
-          "TECH-UP Digital-Rural Empowerment NPC helps bridge rural digital gaps through access, education pathways, tertiary readiness and opportunity support.",
+          "TECH-UP Rural-Digital Empowerment NPC helps bridge rural digital gaps through access, education pathways, tertiary readiness and opportunity support.",
       },
-      { name: "author", content: "TECH-UP Digital-Rural Empowerment NPC" },
-      { property: "og:site_name", content: "TECH-UP Digital-Rural Empowerment NPC" },
+      { name: "author", content: "TECH-UP Rural-Digital Empowerment NPC" },
+      { property: "og:site_name", content: "TECH-UP Rural-Digital Empowerment NPC" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
