@@ -36,13 +36,10 @@ export const Route = createFileRoute("/admin")({
 
 const NAV: { to: string; label: string; icon: typeof Inbox; min: StaffRole }[] = [
   { to: "/admin", label: "Overview", icon: LayoutDashboard, min: "viewer" },
-  { to: "/admin/inbox", label: "Inbox", icon: Inbox, min: "viewer" },
   { to: "/admin/programs", label: "Programmes", icon: GraduationCap, min: "viewer" },
   { to: "/admin/opportunities", label: "Opportunities", icon: Briefcase, min: "viewer" },
   { to: "/admin/events", label: "Events", icon: CalendarDays, min: "viewer" },
   { to: "/admin/content", label: "Content", icon: FileText, min: "viewer" },
-  { to: "/admin/settings", label: "Settings", icon: Settings, min: "admin" },
-  { to: "/admin/staff", label: "Staff", icon: Users, min: "super_admin" },
 ];
 
 type State = { kind: "loading" } | { kind: "denied"; email: string } | { kind: "ok"; session: StaffSession };

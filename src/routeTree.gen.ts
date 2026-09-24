@@ -12,6 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
+import { Route as AdminEventsRouteImport } from './routes/admin.events'
+import { Route as AdminOpportunitiesRouteImport } from './routes/admin.opportunities'
+import { Route as AdminProgramsRouteImport } from './routes/admin.programs'
 import { Route as AdminSignInRouteImport } from './routes/admin_.sign-in'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +33,26 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOpportunitiesRoute = AdminOpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProgramsRoute = AdminProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminSignInRoute = AdminSignInRouteImport.update({
   id: '/admin_/sign-in',
   path: '/admin/sign-in',
@@ -37,34 +61,71 @@ const AdminSignInRoute = AdminSignInRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/opportunities': typeof AdminOpportunitiesRoute
+  '/admin/programs': typeof AdminProgramsRoute
   '/admin/sign-in': typeof AdminSignInRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/opportunities': typeof AdminOpportunitiesRoute
+  '/admin/programs': typeof AdminProgramsRoute
   '/admin/sign-in': typeof AdminSignInRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/opportunities': typeof AdminOpportunitiesRoute
+  '/admin/programs': typeof AdminProgramsRoute
   '/admin_/sign-in': typeof AdminSignInRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/sitemap.xml' | '/admin/sign-in'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/sitemap.xml'
+    | '/admin/content'
+    | '/admin/events'
+    | '/admin/opportunities'
+    | '/admin/programs'
+    | '/admin/sign-in'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/sitemap.xml' | '/admin/sign-in'
-  id: '__root__' | '/' | '/admin' | '/sitemap.xml' | '/admin_/sign-in'
+  to:
+    | '/'
+    | '/admin'
+    | '/sitemap.xml'
+    | '/admin/content'
+    | '/admin/events'
+    | '/admin/opportunities'
+    | '/admin/programs'
+    | '/admin/sign-in'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/sitemap.xml'
+    | '/admin/content'
+    | '/admin/events'
+    | '/admin/opportunities'
+    | '/admin/programs'
+    | '/admin_/sign-in'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AdminSignInRoute: typeof AdminSignInRoute
 }
@@ -92,6 +153,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/opportunities': {
+      id: '/admin/opportunities'
+      path: '/opportunities'
+      fullPath: '/admin/opportunities'
+      preLoaderRoute: typeof AdminOpportunitiesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/programs': {
+      id: '/admin/programs'
+      path: '/programs'
+      fullPath: '/admin/programs'
+      preLoaderRoute: typeof AdminProgramsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin_/sign-in': {
       id: '/admin_/sign-in'
       path: '/admin/sign-in'
@@ -102,9 +191,25 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminContentRoute: typeof AdminContentRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminOpportunitiesRoute: typeof AdminOpportunitiesRoute
+  AdminProgramsRoute: typeof AdminProgramsRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminContentRoute: AdminContentRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminOpportunitiesRoute: AdminOpportunitiesRoute,
+  AdminProgramsRoute: AdminProgramsRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AdminSignInRoute: AdminSignInRoute,
 }
