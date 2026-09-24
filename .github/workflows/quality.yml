@@ -24,4 +24,5 @@ jobs:
       # Existing files have widespread Prettier-only differences. Keep all non-formatting
       # ESLint rules enforced while formatting is normalized in a separate maintenance PR.
       - name: ESLint correctness check
-        run: bunx eslint . --rule 'prettier/prettier: off'
+        run: |
+          bunx eslint . --rule 'prettier/prettier: off'
