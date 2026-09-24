@@ -11,6 +11,7 @@ import { ImpactPathway } from "@/components/site/ImpactPathway";
 import { IntakeProcess } from "@/components/site/IntakeProcess";
 import { IntroBand } from "@/components/site/IntroBand";
 import { Leadership } from "@/components/site/Leadership";
+import { PublicAnnouncement } from "@/components/site/PublicAnnouncement";
 import { PublicUpdates } from "@/components/site/PublicUpdates";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -42,7 +43,7 @@ export const Route = createFileRoute("/")({
 });
 function Index() {
   return <div className="min-h-dvh bg-background"><SiteHeader /><main>
-    <Hero /><IntroBand /><AboutSection /><WhyWeExist /><FocusAreas />
+    <PublicAnnouncement /><Hero /><IntroBand /><AboutSection /><WhyWeExist /><FocusAreas />
     <TertiarySupport /><IntakeProcess /><DocumentChecklist /><ImpactPathway />
     <PublicUpdates /><Leadership /><GetInvolved /><FAQ /><Contact /><CTASection />
   </main><SiteFooter /></div>;
