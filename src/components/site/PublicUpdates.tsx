@@ -3,7 +3,7 @@ import { CalendarDays, ArrowUpRight, BookOpen, BriefcaseBusiness, Megaphone } fr
 import { supabase } from "@/lib/supabase";
 import { Reveal } from "@/components/site/Reveal";
 
-type Item = { id: string; title: string; summary: string; external_url: string | null; kind: "programme" | "opportunity" | "event"; detail?: string };
+type Item = { id: string; title: string; summary: string; external_url: string | null; kind: "programme" | "opportunity" | "event"; detail?: string | undefined };
 type Notice = { id: string; heading: string; body: string };
 export function PublicUpdates() {
   const [items, setItems] = useState<Item[]>([]);
