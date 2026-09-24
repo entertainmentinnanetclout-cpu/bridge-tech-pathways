@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import logo from "@/assets/techup-logo.png.asset.json";
+import { BrandLogo } from "@/components/site/BrandLogo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -82,7 +82,7 @@ function SignInPage() {
   return (
     <main className="surface-gradient flex min-h-dvh items-center justify-center px-4 py-12">
       <div className="w-full max-w-sm rounded-2xl border border-border bg-card p-8 shadow-sm">
-        <img src={logo.url} alt="TECH-UP logo" className="mx-auto h-14 w-auto" />
+        <div className="flex justify-center"><BrandLogo /></div>
         <h1 className="mt-6 text-center text-2xl font-bold text-primary">{recovery ? "Set a new password" : "Staff sign-in"}</h1>
         <p className="mt-2 text-center text-sm text-muted-foreground">{recovery ? "Choose a new password for your TECH-UP staff account." : "Access is limited to authorised TECH-UP staff. There is no public sign-up."}</p>
         {recovery ? (
