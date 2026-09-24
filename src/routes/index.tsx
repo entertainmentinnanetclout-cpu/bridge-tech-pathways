@@ -20,7 +20,7 @@ import { WhyWeExist } from "@/components/site/WhyWeExist";
 import { ORG } from "@/lib/site";
 const title = "TECH-UP | Rural-Digital Empowerment & Tertiary Support";
 const description = "TECH-UP Rural-Digital Empowerment NPC bridges the rural digital divide through tertiary admissions support, digital literacy and 4IR skills training in North West, South Africa.";
-const siteUrl = "https://bridge-tech-pathways.lovable.app/";
+const siteUrl = `${ORG.websiteUrl.replace(/\/$/, "")}/`;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
