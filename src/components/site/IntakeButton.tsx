@@ -1,9 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
-
 import { EXTERNAL_LINK_PROPS, INTAKE_URL } from "@/lib/site";
+import { usePublicSetting } from "@/lib/publicSettings";
 import { cn } from "@/lib/utils";
-
 interface IntakeButtonProps {
   children: ReactNode;
   className?: string;
@@ -11,7 +10,6 @@ interface IntakeButtonProps {
   size?: "md" | "lg";
   withIcon?: boolean;
 }
-
 export function IntakeButton({
   children,
   className,
@@ -19,9 +17,11 @@ export function IntakeButton({
   size = "md",
   withIcon = true,
 }: IntakeButtonProps) {
+  const configuredUrl = usePublicSetting("intake_url", INTAKE_URL);
+  const intakeUrl = /^https:\/\//i.test(configuredUrl) ? configuredUrl : INTAKE_URL;
   return (
     <a
-      href={INTAKE_URL}
+      href={intakeUrl}
       {...EXTERNAL_LINK_PROPS}
       className={cn(
         "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",

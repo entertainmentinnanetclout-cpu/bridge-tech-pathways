@@ -13,7 +13,7 @@ export const ORG = {
 } as const;
 
 export const DIRECTORS = [
-  { name: "Onnalenna Molothlekgi", photo: null },
+  { name: "Onalenna Innocent Molathlekgi", photo: "/techup-founder.jpg" },
   { name: "Keamogetswe Soma", photo: "keamogetswe-soma" },
   { name: "Kgatoentle Chimoya", photo: "kgatoentle-chimoya" },
 ] as const;

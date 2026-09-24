@@ -1,0 +1,28 @@
+name: TECH-UP quality gates
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'feat/**']
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.10'
+      - run: bun install --frozen-lockfile
+      # The Vite/TanStack router plugin generates routeTree.gen.ts at build time.
+      - name: Production build and route generation
+        run: bun run build
+      - name: TypeScript check
+        run: bunx tsc --noEmit
+      # Existing files have widespread Prettier-only differences. Keep all non-formatting
+      # ESLint rules enforced while formatting is normalized in a separate maintenance PR.
+      - name: ESLint correctness check
+        run: |
+          bunx eslint . --rule 'prettier/prettier: off'
