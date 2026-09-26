@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { errorMessage, hasRole, logAudit, supabase } from "@/lib/supabase";
+import { useRealtimeRefresh } from "@/lib/realtime";
 
 export type FieldType = "text" | "textarea" | "url" | "date" | "datetime" | "number" | "select" | "boolean" | "json";
 
@@ -75,6 +76,7 @@ export function CrudManager({ table, title, description, fields, statusField, or
   const [form, setForm] = useState<Record<string, string | boolean>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<Row | null>(null);
+  useRealtimeRefresh([table], "admin");
 
   const query = useQuery({
     queryKey: ["admin", table],

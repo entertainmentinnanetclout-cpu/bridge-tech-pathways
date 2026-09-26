@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 import type { User } from "@supabase/supabase-js";
 import { ArrowLeft, ClipboardList, Loader2, LogOut, PlusCircle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -55,7 +55,7 @@ function ServicesDashboard() {
     });
     return () => { active = false; subscription.unsubscribe(); };
   }, [navigate]);
-  async function load(userId: string) {
+  const load = useCallback(async (userId: string) => {
     setLoading(true); setError("");
     const { data, error: queryError } = await supabase.from("service_requests")
       .select("id,service_type,subject,description,contact_phone,status,staff_response,created_at,updated_at")
@@ -63,8 +63,15 @@ function ServicesDashboard() {
     if (queryError) setError(errorMessage(queryError));
     else setRequests((data ?? []) as ServiceRequest[]);
     setLoading(false);
-  }
-  useEffect(() => { if (user) void load(user.id); }, [user?.id]);
+  }, []);
+  useEffect(() => { if (user) void load(user.id); }, [user, load]);
+  useEffect(() => {
+    if (!user) return;
+    const channel = supabase.channel(`service-requests-${user.id}`)
+      .on("postgres_changes", { event: "*", schema: "public", table: "service_requests", filter: `user_id=eq.${user.id}` }, () => void load(user.id))
+      .subscribe();
+    return () => { void supabase.removeChannel(channel); };
+  }, [user, load]);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!user || saving) return;

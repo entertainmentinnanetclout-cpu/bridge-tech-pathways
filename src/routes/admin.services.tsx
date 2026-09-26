@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { errorMessage, hasRole, logAudit, supabase } from "@/lib/supabase";
+import { useRealtimeRefresh } from "@/lib/realtime";
 
 const STATUSES = ["submitted", "in_review", "awaiting_information", "in_progress", "completed", "cancelled"];
 type Request = { id: string; user_id: string; service_type: string; subject: string; description: string; contact_phone: string | null; status: string; staff_response: string; created_at: string; updated_at: string };
@@ -24,6 +25,7 @@ function ServiceRequests() {
   const [status, setStatus] = useState("submitted");
   const [response, setResponse] = useState("");
   const [saving, setSaving] = useState(false);
+  useRealtimeRefresh(["service_requests"], "admin");
   const q = useQuery({ queryKey: ["admin", "service_requests"], queryFn: async () => {
     const { data, error } = await supabase.from("service_requests")
       .select("id,user_id,service_type,subject,description,contact_phone,status,staff_response,created_at,updated_at")

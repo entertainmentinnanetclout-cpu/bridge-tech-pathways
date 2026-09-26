@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { errorMessage, hasRole, logAudit, supabase } from "@/lib/supabase";
+import { useRealtimeRefresh } from "@/lib/realtime";
 
 type Inquiry = {
   id: string; full_name: string; email: string; subject: string; message: string;
@@ -28,6 +29,7 @@ function Inbox() {
   const [draftNotes, setDraftNotes] = useState("");
   const [draftStatus, setDraftStatus] = useState("new");
   const [saving, setSaving] = useState(false);
+  useRealtimeRefresh(["contact_inquiries"], "admin");
   const q = useQuery({
     queryKey: ["admin", "inbox"],
     queryFn: async () => {
