@@ -49,6 +49,13 @@ function PortalOverview() {
   const firstName = profile?.full_name?.trim().split(/\s+/)[0] || "there";
   const unread = (summary.data?.notices ?? []).filter((n) => !n.read_at).length;
 
+  const cards: { label: string; value: number | undefined; icon: typeof Bell; to: "/portal/applications" | "/portal/courses" | "/portal/assistance" | "/services" }[] = [
+    { label: "Applications", value: summary.data?.applications, icon: ClipboardList, to: "/portal/applications" },
+    { label: "Course interests", value: summary.data?.courses, icon: GraduationCap, to: "/portal/courses" },
+    { label: "Open assistance", value: summary.data?.assistance, icon: HandHelping, to: "/portal/assistance" },
+    { label: "Open services", value: summary.data?.services, icon: BookOpen, to: "/services" },
+  ];
+
   return <section>
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-turquoise">My TECH-UP</p><h1 className="mt-2 text-3xl font-bold tracking-tight text-primary">Welcome, {firstName}</h1><p className="mt-2 max-w-2xl text-sm text-muted-foreground">Manage your TECH-UP support journey from one account: applications, courses, assistance and service requests.</p></div>
@@ -58,12 +65,7 @@ function PortalOverview() {
     {summary.isError && <p className="mt-5 rounded-xl bg-destructive/10 p-4 text-sm text-destructive">{errorMessage(summary.error)}</p>}
 
     <dl className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      {[
-        ["Applications",summary.data?.applications,ClipboardList,"/portal/applications"],
-        ["Course interests",summary.data?.courses,GraduationCap,"/portal/courses"],
-        ["Open assistance",summary.data?.assistance,HandHelping,"/portal/assistance"],
-        ["Open services",summary.data?.services,BookOpen,"/services"],
-      ].map(([label,value,Icon,to]) => <Link key={String(label)} to={String(to)} className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-brand-turquoise/40 hover:shadow-soft"><dt className="flex items-center justify-between text-sm text-muted-foreground"><span>{String(label)}</span><Icon className="size-4 text-primary" /></dt><dd className="mt-3 text-3xl font-bold text-primary">{summary.isLoading ? "…" : String(value ?? 0)}</dd></Link>)}
+      {cards.map(({label,value,icon:Icon,to}) => <Link key={label} to={to} className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-brand-turquoise/40 hover:shadow-soft"><dt className="flex items-center justify-between text-sm text-muted-foreground"><span>{label}</span><Icon className="size-4 text-primary" /></dt><dd className="mt-3 text-3xl font-bold text-primary">{summary.isLoading ? "…" : String(value ?? 0)}</dd></Link>)}
     </dl>
 
     <div className="mt-8 grid gap-6 xl:grid-cols-[1.25fr_.75fr]">
