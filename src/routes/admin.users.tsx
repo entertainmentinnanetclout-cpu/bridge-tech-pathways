@@ -22,7 +22,7 @@ function UsersPage(){
     const {data,error}=await supabase.from("user_profiles").select("id,email,full_name,phone,province,municipality,school_name,current_stage,highest_qualification,onboarding_completed,last_seen_at,created_at").order("created_at",{ascending:false}).limit(1000);
     if(error)throw error;return (data??[]) as Profile[];
   }});
-  const rows=(q.data??[]).filter((u)=>(stage==="all"||u.current_stage===stage)&&(\`\${u.full_name} \${u.email} \${u.phone??""} \${u.school_name??""} \${u.municipality??""}\`).toLowerCase().includes(search.toLowerCase()));
+  const rows=(q.data??[]).filter((u)=>(stage==="all"||u.current_stage===stage)&&[u.full_name,u.email,u.phone??"",u.school_name??"",u.municipality??""].join(" ").toLowerCase().includes(search.toLowerCase()));
   const stages=[...new Set((q.data??[]).map((u)=>u.current_stage))].sort();
 
   return <section><div><h1 className="text-2xl font-bold text-primary">Users</h1><p className="mt-1 text-sm text-muted-foreground">Registered TECH-UP account holders and their self-managed profiles. Authentication passwords are never visible here.</p></div>
